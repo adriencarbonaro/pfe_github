@@ -351,10 +351,14 @@ public class WeightActivity extends MainActivity  {
         }
 
         graph.removeAllSeries();
-        double lastY = graph_in_room.get(graph_in_room.size() - 1).GetyValue();
-        graph.getViewport().setYAxisBoundsManual(true);
-        graph.getViewport().setMaxY(lastY + Y_AXIS_MARGIN);
-        graph.getViewport().setMinY(lastY - Y_AXIS_MARGIN);
+        if (graph_in_room.size() > 0)
+        {
+            double lastY = graph_in_room.get(graph_in_room.size() - 1).GetyValue();
+            graph.getViewport().setYAxisBoundsManual(true);
+            graph.getViewport().setMaxY(lastY + Y_AXIS_MARGIN);
+            graph.getViewport().setMinY(lastY - Y_AXIS_MARGIN);
+        }
+
         graph.addSeries(series);
 
         // Information about specified weight on Tap
